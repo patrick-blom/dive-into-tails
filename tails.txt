@@ -1,0 +1,18 @@
+Getting familiar with tails
+
+Today, where google knows everything, facebook analyse your faces during a videochat and edward snowdan is hunted by the united states, privacy becomes more and more a privilege then a standard in the world wide web.
+Because of this misstate some developers decide to create a live distribution which allows you to use the internet in a more anonymus and secure way. This distribution is called Tails an anchronym for The Amnesic Incognito Live System. 
+In short its a debain based OS which routes all your network traffic through the TOR network mixed with some nice OpenPGP encryption features and the possibilty to set up a LUKS encrypted partition to persists your data. If you want more information about 
+the tails project take a look at the official project page https://tails.boum.org/
+
+I decide to use tails as my portable OS, stored on a usb thumbdrive which is hanigng around my carkeys and providing me the opportunity to use every pc without leaving my digitail fingerprint behind. The installation was straight forward and everything worked as accepted.
+But there was something uncool, the system doesnt look like "MY-System". The opportunity to customize Linux in the way i want is one of main reasons for me to choose this operating system, so i start searching the documentation for possibilies to make Tails more look the way i want. 
+
+My goals:
+- change the background image
+- set a custom icon theme
+- change the default look for the terminal applicaton
+- beeing updateable
+
+Here is how it works.
+First active the persistence mode and select the Dotfiles for persistence. If you dont know how to this, check out the documentation under https://tails.boum.org/doc/first_steps/persistence/configure/index.en.html
