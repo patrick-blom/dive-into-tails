@@ -1,8 +1,8 @@
-Getting familiar with tails
+Getting familiar with Tails
 
-Today, where google knows everything, facebook analyse your faces during a videochat and Edward Snowdan is hunted by the united states, privacy on the internet becomes more and more a privilege then a standard.Because of this misstate some developers decide to create a live distribution which allows you to use the internet in a more anonymus and secure way. This distribution is called Tails an anchronym for The Amnesic Incognito Live System. In short its a debain based OS which routes all your network traffic through the TOR network mixed up with some nice OpenPGP encryption features and the possibilty to set up a LUKS encrypted partition to persists your data. If you want more information about the tails project take a look at the official project page https://tails.boum.org/
+Today, where google knows everything, facebook analyse your faces during a videochat and Edward Snowdan is hunted by the united states, privacy on the internet becomes more and more a privilege then a standard. Because of this misstate some developers decide to create a live distribution which allows you to use the internet in a more anonymous and secure way. This distribution is called Tails an acronym for "The Amnesic Incognito Live System". In short its a Debain based OS which routes all your network traffic through the TOR network mixed up with some nice OpenPGP encryption features and the possibilty to set up a LUKS encrypted partition to persists your data. If you want more information about the Tails project take a look at the official project page https://tails.boum.org/
 
-I decide to use Tails as my portable OS, stored on a usb thumbdrive which's hanigng around my carkeys and providing me the opportunity to use every pc without leaving my digitail fingerprint behind. The installation was straight forward and everything worked as accepted.But there was something uncool, the system doesnt look like "MY-System". The opportunity to customize Linux in the way i want is one of main reasons for me to choose this operating system, so i start searching the documentation for possibilies to make Tails more look the way i want. 
+I decide to use Tails as my portable OS, stored on a usb thumbdrive which's hanigng around my carkeys and providing me the opportunity to use every pc without leaving my digitail fingerprint behind. The installation was straight forward and everything worked as accepted. But there was something uncool, the system doesnt look like "MY-System". The opportunity to customize Linux in the way i want is one of the main reasons for me to choose this operating system, so i start searching the documentation for possibilities to make Tails look more the way i want. 
 
 My goals:
 - change the background image
@@ -11,9 +11,9 @@ My goals:
 - beeing updateable
 
 Here is how it works.
-First active the persistence mode and select the dotfiles for persistence. If you dont know how to this, check out the documentation under https://tails.boum.org/doc/first_steps/persistence/configure/index.en.html
+First active the persistence mode and select the dotfiles for persistence. If you dont know how to do this, check the documentation under https://tails.boum.org/doc/first_steps/persistence/configure/index.en.html
 
-After that create a bash script inside the dot folder which contains all commands to customize the system. This script will be executed at every login and sets my custom config. Because of the idea to run maybe multiple scripts atfer the login porcess i decided to create a special folder for my startup scripts. 
+After that, create a bash script inside the dotfiles folder which contains all commands to customize the system. This script will be executed at every login and sets your custom config. Because of the idea to run maybe multiple scripts atfer the login porcess i decided to create a special folder for my startup scripts. 
 
 {code}
 mkdir /live/persistence/TailsData_unlocked/dotfiles/scripts
@@ -28,7 +28,7 @@ Dont forget to set up the bash in the first line of your set-custom-settings.sh
 #!/bin/sh
 {code}
 
-Now lets take a look at the backgorund image. Tails comes with gnome which could be easy customized with the gsettings tool. Before setting the new wallpaper create a folder called wallpaper into the dotfiles folder which will conatin your custom wallpaper. 
+Now lets take a look at the backgorund image. Tails comes with gnome which can be easy customized with the gsettings tool. Before set up the new wallpaper create a directory called wallpaper into the dotfiles folder which will contain your custom wallpaper/s. 
 
 {code}
 mkdir /live/persistence/TailsData_unlocked/dotfiles/wallpaper
@@ -58,29 +58,30 @@ Now update the set-custom-settings script with this command
 gsettings set org.gnome.desktop.interface icon-theme coolTheme
 {code}
 
-This will set the gnome interface theme to your custom theme. Well, 50% passed so far so good. Its time to change the ugly Terminal colors to something cool. In gnome the application settings were stored for every user in a .gconf folder inside there home directory. So if we want to change the settings for the terminal we have to change these files. For the Termnial application the deault config is hold by an xml-file and stored in the following folder.
+This will set the gnome interface theme to your custom theme. 
+Well, 50% passed so far so good. Its time to change the ugly Terminal colors to something cool. In gnome the application settings were stored for every user in a .gconf folder inside there home directory. So if we want to change the settings for the terminal we have to change these files. For the Termnial application the deault config is stored by an xml-file and placed in the following folder.
 
 {code}
 ~/.gconf/apps/gnome-terminal/profiles/Default/%gconf.xml
 {code}
 
-But wait, why changing the default config instead of creating an new Profile ? Good question, the answer, because it works. I tried to set up a additional profile and first its seems to work but if i start the command to set my profile as the default nothing happened. If some one can tell me why this behavior accuors feel free to contact me. Usual i only use one color theme inside the terminal, so for me its a good solution.
+But wait, why changing the default config instead of creating an new profile ? Good question, the answer, because it works. I tried to set up a additional profile and first its seems to work but if i start the command to set my profile as the default nothing happened. If some one can tell me why this behavior occurs, feel free to contact me. Usual i only use one color theme inside the terminal, so for me its a good solution.
 
-To change the default settings of the Terminal use the settings GUI or change the xml file directly. If everything looks as it should copy the xml file including the folder structure to the dotfiles folder.
+To change the default settings of the Terminal use the settings GUI or change the xml file directly. If everything looks as it should copy the xml file including the folder structure to the dotfiles directory.
 
 {code}
 mkdir /live/persistence/TailsData_unlocked/dotfiles/.gconf/apps/gnome-terminal/profiles/Default/
 cp ~/.gconf/apps/gnome-terminal/profiles/Default/%gconf.xml  /live/persistence/TailsData_unlocked/dotfiles/.gconf/apps/gnome-terminal/profiles/Default/ 
 {code}
 
-To ensure that the default profile is really set at the login process update your set-custom-settings script with this command.
+To ensure that the default profile is really set at the login process, update your set-custom-settings script with this command.
 
 {code}
 #set terminal profile
 gconftool-2 --set --type=string /apps/gnome-terminal/global/default_profile Default
 {code}
 
-Last not least we have to include oure custom script into the login process. The best way to do that is to edit the .xsessionrc inside the amnesia home directoy. This script will be excuted afer every successful login. So open the file using gedit and add the following lines of code at the end of the file.
+Last not least we have to include our custom script into the login process. The best way to do that is to edit the .xsessionrc inside the amnesia home directoy. This script will be excuted afer every successful login. So open the file using gedit and add the following lines of code at the end of the file.
 
 {code}
 #set custom settings
@@ -89,18 +90,18 @@ if [ -f ~/scripts/set-custom-settings.sh ]; then
 fi
 {code}
 
-Now save the file and copy it to the dotfiles folder. 
+This will check if our file is present an then executes it. Now save the file and copy it to the dotfiles folder. 
 
 {code}
 cp ~/.xsessionrc /live/persistence/TailsData_unlocked/dotfiles/.xsessionrc
 {code}
 
 
-Thats it, we're done. For the next time you will boot your Tails OS and login into your machine your custom settings will be loaded. But why does it work? The clue in the startup process is, that the persistent partition is mounted before the user will be logged in. And so your custom dotfiles will also be linked before the loging process is completed. This means the our custom .xsessionrc file will be linked to the amnesia home directory before the X-Server executes it. If the X-Server executes the file our addtional code is excuted and runs all commands to set up our config.
+Thats it, we're done. For the next time you will boot your Tails OS and login into your machine your custom settings will be loaded. But why does this work? The clue in the startup process is, that the persistent partition is mounted before the user will be logged in. And so your custom dotfiles will also be linked before the login process is completed. This means that your custom .xsessionrc file will be linked to the amnesia home directory before the X-Server executes it. If the X-Server executes the file your addtional code is excuted and runs all commands to set up the config.
 
 The fact that we only use mechanisms that Tails provide, we are 100% save for updates.
 
-But the crux of the encrypted persistend convinience is, that the whole partition will be decryped at during the start up. This massivly slows down the login process. But i think a system start up in 30-45 seconds (in my case) is acceptable for a nearly anonymous Operating System which looks the way i want.
+But the crux of the encrypted persistend convinience is, that the whole partition will be decryped at during the start up. This massivly slows down the login process. But i think a system start up in 30-45 seconds (in my case) is acceptable for a nearly anonymous Operating System that looks the way i want.
 
 
 
