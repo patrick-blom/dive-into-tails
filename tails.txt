@@ -102,7 +102,7 @@ That's it, you're done. For the next time you will boot your Tails OS and login 
 
 The fact that we only use mechanisms provided by Tails, is the guarantee to be compatible with the comming Tails updates.
 
-But the crux of the encrypted persistent convenience is, that the whole partition will be decrypted during the start up. This massively slows down the login process. But I think a system start up in 30-45 seconds (in my case) is acceptable for a nearly anonymous Operating System that looks the way i want.
+But the crux of the encrypted persistent convenience is, that the whole partition will be decrypted during the start up. This massively slows down the login process. But I think a system start up in 30-45 seconds (in my case) is acceptable for a nearly anonymous Operating System that looks the way I want.
 
 
 
