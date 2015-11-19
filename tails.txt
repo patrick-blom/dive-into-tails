@@ -7,8 +7,8 @@ I decide to use Tails as my portable OS, stored on a USB thumbdrive which is att
 My goals:
 - change the background image
 - set a custom icon theme
-- change the default look for the terminal applicaton
-- beeing updateable
+- change the default look for the terminal application
+- being updateable
 
 Here is how it works.
 First activate the persistence mode and select the dot-files for persistence. If you don't know how to do this, check the documentation under https://tails.boum.org/doc/first_steps/persistence/configure/index.en.html
