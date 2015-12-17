@@ -66,7 +66,7 @@ Its time to change the ugly terminal colors to something cool. In gnome the appl
 ~/.gconf/apps/gnome-terminal/profiles/Default/%gconf.xml
 {code}
 
-But wait, why changing the default config instead of creating an new profile ? Good question, the answer, because it works. I tried to set up a additional profile and first it seemed to work but when I started the command to set my profile as the default nothing happened. If someone can tell me why this problem occurs, feel free to contact me. Usually I only use one color theme inside the terminal, so for me it's a good solution.
+But wait, why changing the default config instead of creating an new profile ? Good question, the answer, because it works. I tried to set up a additional profile and first it seemed to work but when I started the command to set my profile as the default nothing happened. If someone can tell me why this problem occurs, feel free to contact me  ( tails[at]bl0m[dot]de ). Usually I only use one color theme inside the terminal, so for me it's a good solution.
 
 To change the default settings of the Terminal use the settings GUI or change the xml file directly. If everything looks as it should copy the xml file including the folder structure to the dot-files directory.
 
